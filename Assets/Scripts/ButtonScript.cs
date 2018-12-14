@@ -2,13 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+
 
 public class ButtonScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    [SerializeField] Button button;
+    [SerializeField] int num_button = 10;
+
+    private static int num_red ;
+    private static int num_blue;
+
+    void Awake()
+    {
+        num_red = 0;
+        num_blue = 0;
+    }
+    // Use this for initialization
+    void Start()  {
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -18,5 +31,28 @@ public class ButtonScript : MonoBehaviour {
     public void OnClick()
     {
         Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+    }
+
+    public void OnClickRed()
+    {
+        GameObject Content;
+        Content = GameObject.Find("Content");
+        GameObject new_button = (GameObject)Instantiate(Resources.Load("RedButton"));
+        new_button.transform.position = new Vector3(-50, 150 - (num_red * 33), 0);
+        new_button.name = "赤ボタン " + (num_red + 1);
+        new_button.GetComponentInChildren<Text>().text = "赤ボタン " + (num_red + 1);
+        new_button.transform.SetParent(Content.transform, false);
+        num_red += 1;
+    }
+    public void OnClickBlue()
+    {
+        GameObject Content;
+        Content = GameObject.Find("Content");
+        GameObject new_button = (GameObject)Instantiate(Resources.Load("BlueButton"));
+        new_button.transform.position = new Vector3(50, 150 - (num_blue * 33), 0);
+        new_button.name = "青ボタン " + (num_blue + 1);
+        new_button.GetComponentInChildren<Text>().text = "青ボタン " + (num_blue + 1);
+        new_button.transform.SetParent(Content.transform, false);
+        num_blue += 1;
     }
 }

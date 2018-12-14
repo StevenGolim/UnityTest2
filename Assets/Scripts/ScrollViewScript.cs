@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScrollViewScript : MonoBehaviour {
 
-    public Button button;
+    [SerializeField] Button button;
     int num_button = 10;
 
 	// Use this for initialization
