@@ -38,7 +38,6 @@ public class ButtonScript : MonoBehaviour {
         GameObject Content;
         Content = GameObject.Find("Content");
         GameObject new_button = (GameObject)Instantiate(Resources.Load("RedButton"));
-        new_button.transform.position = new Vector3(-50, 150 - (num_red * 33), 0);
         new_button.name = "赤ボタン " + (num_red + 1);
         new_button.GetComponentInChildren<Text>().text = "赤ボタン " + (num_red + 1);
         new_button.transform.SetParent(Content.transform, false);
@@ -49,7 +48,6 @@ public class ButtonScript : MonoBehaviour {
         GameObject Content;
         Content = GameObject.Find("Content");
         GameObject new_button = (GameObject)Instantiate(Resources.Load("BlueButton"));
-        new_button.transform.position = new Vector3(50, 150 - (num_blue * 33), 0);
         new_button.name = "青ボタン " + (num_blue + 1);
         new_button.GetComponentInChildren<Text>().text = "青ボタン " + (num_blue + 1);
         new_button.transform.SetParent(Content.transform, false);
