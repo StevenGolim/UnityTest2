@@ -28,29 +28,34 @@ public class ButtonScript : MonoBehaviour {
 		
 	}
 
-    public void OnClick()
+    public void OnClickClone()
     {
         Debug.Log(EventSystem.current.currentSelectedGameObject.name);
     }
 
-    public void OnClickRed()
+    public void OnClickCreate()
     {
         GameObject Content;
         Content = GameObject.Find("Content");
-        GameObject new_button = (GameObject)Instantiate(Resources.Load("RedButton"));
-        new_button.name = "赤ボタン " + (num_red + 1);
-        new_button.GetComponentInChildren<Text>().text = "赤ボタン " + (num_red + 1);
-        new_button.transform.SetParent(Content.transform, false);
-        num_red += 1;
-    }
-    public void OnClickBlue()
-    {
-        GameObject Content;
-        Content = GameObject.Find("Content");
-        GameObject new_button = (GameObject)Instantiate(Resources.Load("BlueButton"));
-        new_button.name = "青ボタン " + (num_blue + 1);
-        new_button.GetComponentInChildren<Text>().text = "青ボタン " + (num_blue + 1);
-        new_button.transform.SetParent(Content.transform, false);
-        num_blue += 1;
+        if (EventSystem.current.currentSelectedGameObject.name == "RedButton")
+        {
+            GameObject new_button = (GameObject)Instantiate(Resources.Load("RedButton"));
+            new_button.name = "赤ボタン " + (num_red + 1);
+            new_button.GetComponentInChildren<Text>().text = "赤ボタン " + (num_red + 1);
+            num_red += 1;
+            new_button.transform.SetParent(Content.transform, false);
+            new_button.GetComponent<Button>().onClick.AddListener(OnClickClone);
+        }
+        if (EventSystem.current.currentSelectedGameObject.name == "BlueButton")
+        {
+            GameObject new_button = (GameObject)Instantiate(Resources.Load("BlueButton"));
+            new_button.name = "青ボタン " + (num_blue + 1);
+            new_button.GetComponentInChildren<Text>().text = "青ボタン " + (num_blue + 1);
+            num_blue += 1;
+            new_button.transform.SetParent(Content.transform, false);
+            new_button.GetComponent<Button>().onClick.AddListener(OnClickClone);
+        }
+
+
     }
 }

@@ -87,7 +87,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114270621186099642, guid: 0b056ce394dc9404abdc736d34113189,
           type: 2}
-        m_MethodName: OnClick
+        m_MethodName: OnClickCreate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
