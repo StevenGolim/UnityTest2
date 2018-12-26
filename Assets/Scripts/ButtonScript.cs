@@ -7,20 +7,30 @@ using UnityEngine.UI;
 
 
 public class ButtonScript : MonoBehaviour {
-
-    [SerializeField] Button button;
-    [SerializeField] int num_button = 10;
+    GameObject new_button;
+    GameObject Content;
 
     private static int num_red ;
     private static int num_blue;
 
-    void Awake()
-    {
-        num_red = 0;
-        num_blue = 0;
-    }
+    [SerializeField] Button red_button;
+    [SerializeField] Button blue_button;
+
     // Use this for initialization
     void Start()  {
+        num_red = 0;
+        num_blue = 0;
+        Content = GameObject.Find("Content");
+        red_button.onClick.AddListener(() =>
+        {
+            num_red += 1;
+            OnClickCreate("RedButton","赤ボタン", num_red);
+        });
+        blue_button.onClick.AddListener(() =>
+        {
+            num_blue += 1;
+            OnClickCreate("BlueButton","青ボタン", num_blue);
+        });
     }
 	
 	// Update is called once per frame
@@ -33,29 +43,12 @@ public class ButtonScript : MonoBehaviour {
         Debug.Log(EventSystem.current.currentSelectedGameObject.name);
     }
 
-    public void OnClickCreate()
+    public void OnClickCreate(string prefabName,string buttonName,int buttonNum)
     {
-        GameObject Content;
-        Content = GameObject.Find("Content");
-        if (EventSystem.current.currentSelectedGameObject.name == "RedButton")
-        {
-            GameObject new_button = (GameObject)Instantiate(Resources.Load("RedButton"));
-            new_button.name = "赤ボタン " + (num_red + 1);
-            new_button.GetComponentInChildren<Text>().text = "赤ボタン " + (num_red + 1);
-            num_red += 1;
-            new_button.transform.SetParent(Content.transform, false);
-            new_button.GetComponent<Button>().onClick.AddListener(OnClickClone);
-        }
-        if (EventSystem.current.currentSelectedGameObject.name == "BlueButton")
-        {
-            GameObject new_button = (GameObject)Instantiate(Resources.Load("BlueButton"));
-            new_button.name = "青ボタン " + (num_blue + 1);
-            new_button.GetComponentInChildren<Text>().text = "青ボタン " + (num_blue + 1);
-            num_blue += 1;
-            new_button.transform.SetParent(Content.transform, false);
-            new_button.GetComponent<Button>().onClick.AddListener(OnClickClone);
-        }
-
-
+       new_button = (GameObject)Instantiate(Resources.Load(prefabName));
+       new_button.name = buttonName + (buttonNum);         
+       new_button.GetComponentInChildren<Text>().text = new_button.name;
+       new_button.transform.SetParent(Content.transform, false);
+       new_button.GetComponent<Button>().onClick.AddListener(OnClickClone);
     }
 }
