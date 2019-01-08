@@ -71,7 +71,11 @@ public class ButtonScript : MonoBehaviour {
 
     void OnClickDeleteOldest(List<GameObject> list)
     {
-        Destroy(list[0].gameObject);
-        list.RemoveAt(0);
+        if(list.Count > 0)
+        {
+            Destroy(list[0].gameObject);
+            list.RemoveAt(0);
+        }
+
     }
 }
