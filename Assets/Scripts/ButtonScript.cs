@@ -18,11 +18,6 @@ public class ButtonScript : MonoBehaviour {
     [SerializeField] Button del_red_button;
     [SerializeField] Button del_blue_button;
 
-    private GameObject OpenDesc;
-
-    [SerializeField] Button []tabButton;
-    [SerializeField] GameObject[] tab;
-
     private List<GameObject> redButtonList;
     private List<GameObject> blueButtonList;
 
@@ -33,7 +28,6 @@ public class ButtonScript : MonoBehaviour {
 
         redButtonList = new List<GameObject>();
         blueButtonList = new List<GameObject>();
-
         Content = GameObject.Find("Content");
         red_button.onClick.AddListener(() =>
         {
@@ -53,17 +47,6 @@ public class ButtonScript : MonoBehaviour {
         {
             OnClickDeleteOldest(blueButtonList);
         });
-
-        for(int i = 0; i < tabButton.Length ;i++)
-        {
-            //Closureという現象
-            int x = i;
-            tabButton[x].onClick.AddListener(() =>
-            {
-                ChangeTab(x);
-            });
-        }
-        ChangeTab(0);
     }
 	
 	// Update is called once per frame
@@ -93,37 +76,5 @@ public class ButtonScript : MonoBehaviour {
             list.RemoveAt(0);
         } 
 
-    }
-
-
-
-    public void OnClickOpenDesc(GameObject Desc)
-    {
-        OpenDesc = (GameObject)Instantiate(Desc);
-        OpenDesc.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
-        OpenDesc.transform.Find("Close").GetComponent<Button>().onClick.AddListener(OnClickShutDesc);
-    }
-
-    public void OnClickShutDesc()
-    {
-        Destroy(OpenDesc);
-    }
-
-    void ChangeTab(int tabNum)
-    {
-        for (int i = 0; i < tabButton.Length; i++)
-        {
-
-            if (i == tabNum)
-            {
-                tab[i].SetActive(true);
-                tabButton[tabNum].GetComponent<Image>().color = new Color(1.0f, 0.0f, 0.0f);
-            }
-            else
-            {
-                tab[i].SetActive(false);
-                tabButton[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f);
-            }
-        }
     }
 }
