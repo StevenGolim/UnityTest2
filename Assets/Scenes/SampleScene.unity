@@ -920,6 +920,53 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f42fada837dc3dc498c1b0f2ce640b3c, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &896236035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1278038947153000, guid: 1fb60d35c1824344597310a62b0f7d94,
+    type: 2}
+  m_PrefabInternal: {fileID: 1322714628}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 896236037}
+  - component: {fileID: 896236036}
+  m_Layer: 0
+  m_Name: ForScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &896236036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114212714336661532, guid: 1fb60d35c1824344597310a62b0f7d94,
+    type: 2}
+  m_PrefabInternal: {fileID: 1322714628}
+  m_GameObject: {fileID: 896236035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0eb12f11ba3f984883d2d8cccadf207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabButton:
+  - {fileID: 1681392168}
+  - {fileID: 1612283971}
+  - {fileID: 1500403431}
+--- !u!4 &896236037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4270143947259002, guid: 1fb60d35c1824344597310a62b0f7d94,
+    type: 2}
+  m_PrefabInternal: {fileID: 1322714628}
+  m_GameObject: {fileID: 896236035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 107.05966, y: 142.18393, z: -2.4380157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &926475354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,8 +1076,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 621165728}
   m_HandleRect: {fileID: 621165727}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1794,7 +1841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.999992, y: -0.000015116384}
+  m_AnchoredPosition: {x: 10.999992, y: -0.000006192071}
   m_SizeDelta: {x: -224, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1607378466
@@ -2152,7 +2199,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'All
+  m_Text: 'Nothing
 
 '
 --- !u!222 &1695217522

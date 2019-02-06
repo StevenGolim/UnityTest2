@@ -118,20 +118,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114411571318463508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114212714336661532, guid: 1fb60d35c1824344597310a62b0f7d94,
-          type: 2}
-        m_MethodName: OnClickOpenDesc
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1104057191718080, guid: 7aeeb2488357a344887b84deb56f13a4,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114411571318463508

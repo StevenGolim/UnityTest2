@@ -14,6 +14,8 @@ public class TabButtonScript : MonoBehaviour {
 
     private List<GameObject> pet_List;
     private List<GameObject> demon_List;
+
+    private int lastTabNum;
     // Use this for initialization
     void Start () {
 
@@ -44,6 +46,14 @@ public class TabButtonScript : MonoBehaviour {
         {
             GameObject new_Item = (GameObject)Instantiate(item);
             new_Item.transform.SetParent(Content.transform, false);
+            foreach (Transform child in new_Item.transform)
+            {
+                if (child.name == "Name") new_Item.name = child.GetComponent<Text>().text;
+            }
+            new_Item.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                OnClickOpenDesc(new_Item.name + "Desc");
+            });
             new_Item.SetActive(false);
             list.Add(new_Item);
         }
@@ -53,9 +63,9 @@ public class TabButtonScript : MonoBehaviour {
 		
 	}
 
-    public void OnClickOpenDesc(GameObject desc)
+    public void OnClickOpenDesc(string desc)
     {
-        OpenDesc = (GameObject)Instantiate(desc);
+        OpenDesc = (GameObject)Instantiate(Resources.Load("ItemDesc/"+desc));
         OpenDesc.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
         OpenDesc.transform.Find("Close").GetComponent<Button>().onClick.AddListener(OnClickShutDesc);
     }
@@ -65,30 +75,15 @@ public class TabButtonScript : MonoBehaviour {
         Destroy(OpenDesc);
     }
 
-    void ChangeTab(int tabNum)
-    {
-        for (int i = 0; i < tabButton.Length; i++)
-        {
-            if (i == tabNum)
-            {
-                tabButton[tabNum].GetComponent<Image>().color = new Color(1.0f, 0.0f, 0.0f);
-            }
-            else
-            {
-                tabButton[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f);
-            }
-        }
 
-        switch(tabNum)
+    void ShowItem(int tabNum)
+    {
+        switch (tabNum)
         {
             case 0:
                 foreach (GameObject item in pet_List)
                 {
                     item.SetActive(true);
-                }
-                foreach (GameObject item in demon_List)
-                {
-                    item.SetActive(false);
                 }
                 break;
             case 1:
@@ -96,23 +91,43 @@ public class TabButtonScript : MonoBehaviour {
                 {
                     item.SetActive(true);
                 }
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
+    }
+
+    void HideItem(int tabNum)
+    {
+        switch (tabNum)
+        {
+            case 0:
                 foreach (GameObject item in pet_List)
                 {
                     item.SetActive(false);
                 }
                 break;
-            case 2:
-                foreach (GameObject item in pet_List)
-                {
-                    item.SetActive(true);
-                }
+            case 1:
                 foreach (GameObject item in demon_List)
                 {
-                    item.SetActive(true);
+                    item.SetActive(false);
                 }
+                break;
+            case 2:
                 break;
             default:
                 break;
         }
+    }
+
+    void ChangeTab(int tabNum)
+    {
+        tabButton[lastTabNum].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f);
+        tabButton[tabNum].GetComponent<Image>().color = new Color(1.0f, 0.0f, 0.0f);
+        HideItem(lastTabNum);
+        ShowItem(tabNum);
+        lastTabNum = tabNum;     
     }
 }
