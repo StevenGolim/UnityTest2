@@ -76,43 +76,20 @@ public class TabButtonScript : MonoBehaviour {
     }
 
 
-    void ShowItem(int tabNum)
+    void ActiveItem(int tabNum,bool enable)
     {
         switch (tabNum)
         {
             case 0:
                 foreach (GameObject item in pet_List)
                 {
-                    item.SetActive(true);
+                    item.SetActive(enable);
                 }
                 break;
             case 1:
                 foreach (GameObject item in demon_List)
                 {
-                    item.SetActive(true);
-                }
-                break;
-            case 2:
-                break;
-            default:
-                break;
-        }
-    }
-
-    void HideItem(int tabNum)
-    {
-        switch (tabNum)
-        {
-            case 0:
-                foreach (GameObject item in pet_List)
-                {
-                    item.SetActive(false);
-                }
-                break;
-            case 1:
-                foreach (GameObject item in demon_List)
-                {
-                    item.SetActive(false);
+                    item.SetActive(enable);
                 }
                 break;
             case 2:
@@ -126,8 +103,8 @@ public class TabButtonScript : MonoBehaviour {
     {
         tabButton[lastTabNum].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f);
         tabButton[tabNum].GetComponent<Image>().color = new Color(1.0f, 0.0f, 0.0f);
-        HideItem(lastTabNum);
-        ShowItem(tabNum);
+        ActiveItem(lastTabNum,false);
+        ActiveItem(tabNum,true);
         lastTabNum = tabNum;     
     }
 }
